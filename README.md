@@ -31,6 +31,7 @@ Install all necessary libraries defined in the project requirements:
 Bash
 
 pip install -r requirements.txt
+
 Note: This will install streamlit, pandas, google-generativeai, and other essential tools for the AI and UI.
 
 4. Configure Your API Secrets
