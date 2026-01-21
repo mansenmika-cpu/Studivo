@@ -7,12 +7,14 @@ st.title("🎓 STUDIVO")
 st.subheader("Your Personal AI Academic Assistant")
 st.divider()
 
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2 = st.columns([1, 1])
 with col2:
     st.info("Welcome back! What would you like to do today?")
     if st.button("🚀 Manage Modules", use_container_width=True):
         st.switch_page("modules.py")
+with col1:        
     if st.button("Create a Test", use_container_width=True):
         st.switch_page("tests.py")        
 
         
+
