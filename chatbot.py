@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import google.generativeai as genai
+from PIL import Image
 from style_utils import apply_custom_style
 
 apply_custom_style()
@@ -27,6 +28,7 @@ selected_resources = selected_modules_df["Resources"].to_list()
 
 files = st.file_uploader("Upload files", type=["png", "jpg", "jpeg",'pdf', 'docx', 'txt', 'csv'], accept_multiple_files=True)
 
+
 system_instruction = f"""
     Imagine you are a tutor for solving student's academic questions.
     The student will give you module name of {module}, resources of {selected_resources}, language of {language} to give the response and files of {files}.
@@ -51,17 +53,28 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("How can I help you today?"):
+if prompt := st.chat_input("Ask about your notes or images..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
         try:
-            chat = model.start_chat(history=[])
-            response = chat.send_message(prompt)
+            # Create the multimodal payload
+            content_to_send = [prompt]
+            
+            # Check if images were uploaded in the file_uploader
+            if files:
+                for file in files:
+                    if file.type in ["image/png", "image/jpeg", "image/jpg"]:
+                        img = Image.open(file)
+                        content_to_send.append(img)
+
+            # Generate response using the content list
+            response = model.generate_content(content_to_send)
+            
             st.markdown(response.text)
             st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
         except Exception as e:
-
             st.error(f"Error: {e}")
