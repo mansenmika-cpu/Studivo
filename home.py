@@ -12,7 +12,3 @@ with col2:
     st.info("Welcome back! What would you like to do today?")
     if st.button("🚀 Manage Modules", use_container_width=True):
         st.switch_page("modules.py")
-        
-
-
-
