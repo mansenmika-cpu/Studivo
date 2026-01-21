@@ -26,7 +26,7 @@ module_list = modules_df['Modules'].tolist()
 modules_list = list(set(module_list))
 
 with st.form(key='delete_module'):
-    st.write("### Delete Modules")
+    st.write("### 🗑️ Delete Modules")
     del_module = st.selectbox(
     "Module",
     module_list,
@@ -39,4 +39,5 @@ if submit1:
     modules_df = modules_df[modules_df['Modules'] != del_module]  
     modules_df.to_csv("modules.csv", index=False)
     st.success(f"Deleted {del_module} module!")  
+
 
