@@ -15,8 +15,10 @@ module = st.selectbox("📚 Module", module_list, index=None)
 
 type = st.selectbox("Test type", ("MCQ", "Structured Essay", "Essay"))
 
+dif_level = st.selectbox("Difficult Level", ("Easy", "Normal", "Hard"))
+
 if type == "MCQ":
-    maxq = 50
+    maxq = 30
 else:
     maxq = 5    
 
@@ -30,7 +32,7 @@ selected_resources = selected_modules_df["Resources"].to_list()
 
 system_instructions = f"""
     Imagine You have to make a test for a student.
-    Student will give you the test type of {type}.
+    Student will give you the test type of {type} and the test difficult level as {dif_level}.
     Use your response language as language of {language}.
     The student will give you the module as {module}, number of questions as {num_q} and resources as {selected_resources}.
     1. Give number of questions which student need corressponding to selected resources labelly. 
@@ -68,4 +70,3 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
-
