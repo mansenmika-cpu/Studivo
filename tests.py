@@ -13,7 +13,14 @@ modules_list = list(set(module_list))
 
 module = st.selectbox("📚 Module", module_list, index=None)
 
-num_q = st.number_input("Numebr of questions", 1, 50)
+type = st.selectbox("Test type", ("MCQ", "Structured Essay", "Essay"))
+
+if type == "MCQ":
+    maxq = 50
+else:
+    maxq = 5    
+
+num_q = st.number_input("Numebr of questions", 1, maxq)
 
 language = st.selectbox("🌐 Choose Language", ["English", "Sinhala"], index=0)
 
@@ -23,6 +30,7 @@ selected_resources = selected_modules_df["Resources"].to_list()
 
 system_instructions = f"""
     Imagine You have to make a test for a student.
+    Student will give you the test type of type.
     Use your response language as language of {language}.
     The student will give you the module as {module}, number of questions as {num_q} and resources as {selected_resources}.
     1. Give number of questions which student need corressponding to selected resources labelly. 
@@ -30,6 +38,7 @@ system_instructions = f"""
     3. Give the instructions top.
     4. Mention the resources which you used.
     5. Give answers labelly for the questions.
+    Note: Use same words in the resources when making questions.
     """
 
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
