@@ -29,7 +29,7 @@ system_instructions = f"""
     2. And give the weight of the questions out of 100.
     3. Give the instructions top.
     4. Mention the resources which you used.
-    5. Give an answer sheet for the question.
+    5. Give answers labelly for the questions.
     """
 
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
@@ -52,6 +52,10 @@ if st.button("Create a Test", use_container_width=True):
                         {response.text}
                     </div>
                 """, unsafe_allow_html=True)
-        except Exception as e:
+            st.session_state["student_language"] = language
+            st.session_state["student_module"] = module
+            st.session_state["student_number_of_questions"] = num_q
+            st.session_state["student_resources"] = selected_resources
 
+        except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
