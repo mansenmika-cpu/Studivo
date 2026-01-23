@@ -60,7 +60,9 @@ if st.button("Create a Test", use_container_width=True):
 
             st.subheader("Your Test")
             st.markdown(f"""
+                    <div>
                         {response.text}
+                    </div>
                 """, unsafe_allow_html=True)
             st.session_state["student_language"] = language
             st.session_state["student_module"] = module
@@ -69,6 +71,7 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
 
 
 
