@@ -35,12 +35,12 @@ system_instructions = f"""
     Student will give you the test type of {type} and the test difficult level as {dif_level}.
     Use your response language as language of {language}.
     The student will give you the module as {module}, number of questions as {num_q} and resources as {selected_resources}.
+    Your response should be copied by students for their studies.
     1. Give number of questions which student need corressponding to selected resources labelly. 
     2. And give the weight of the questions out of 100.
     3. Give the instructions top.
     4. Mention the resources which you used.
-    5. Give answers labelly for the questions.
-    6. Give a copy option to copy the response. 
+    5. Give answers labelly for the questions. 
     Note: Use same words in the resources when making questions.
     """
 
@@ -72,6 +72,7 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
 
 
 
