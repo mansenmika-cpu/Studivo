@@ -40,6 +40,7 @@ system_instructions = f"""
     3. Give the instructions top.
     4. Mention the resources which you used.
     5. Give answers labelly for the questions.
+    6. Give a copy option to copy the response. 
     Note: Use same words in the resources when making questions.
     """
 
@@ -70,3 +71,4 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
