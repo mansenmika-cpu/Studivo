@@ -59,12 +59,7 @@ if st.button("Create a Test", use_container_width=True):
             response = model.generate_content(f"Your test according to {module} module.")
 
             st.subheader("Your Test")
-            st.markdown(f"""
-                    <div style="background-color: #e8f4f8; padding: 20px; border-radius: 10px; border-left: 5px solid #2980b9;">
-                        {response.text}
-                    
-                    </div>
-                """, unsafe_allow_html=True)
+            {response.txt}
             st.session_state["student_language"] = language
             st.session_state["student_module"] = module
             st.session_state["student_number_of_questions"] = num_q
@@ -72,6 +67,7 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
 
 
 
