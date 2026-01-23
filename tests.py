@@ -59,7 +59,9 @@ if st.button("Create a Test", use_container_width=True):
             response = model.generate_content(f"Your test according to {module} module.")
 
             st.subheader("Your Test")
-            {response.txt}
+            st.markdown(f"""
+                        {response.text}
+                """, unsafe_allow_html=True)
             st.session_state["student_language"] = language
             st.session_state["student_module"] = module
             st.session_state["student_number_of_questions"] = num_q
