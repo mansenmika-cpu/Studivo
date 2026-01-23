@@ -60,17 +60,14 @@ if prompt := st.chat_input("Ask about your notes or images..."):
 
     with st.chat_message("assistant"):
         try:
-            # Create the multimodal payload
             content_to_send = [prompt]
             
-            # Check if images were uploaded in the file_uploader
             if files:
                 for file in files:
                     if file.type in ["image/png", "image/jpeg", "image/jpg"]:
                         img = Image.open(file)
                         content_to_send.append(img)
 
-            # Generate response using the content list
             response = model.generate_content(content_to_send)
             
             st.markdown(response.text)
@@ -78,5 +75,6 @@ if prompt := st.chat_input("Ask about your notes or images..."):
             
         except Exception as e:
             st.error(f"Error: {e}")
+
 
 
