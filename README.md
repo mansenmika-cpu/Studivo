@@ -35,9 +35,17 @@ pip install -r requirements.txt
 Note: This will install streamlit, pandas, google-generativeai, and other essential tools for the AI and UI.
 
 4. Configure Your API Secrets
-The app requires an API key to communicate with the Gemini 2.5 Flash model.
+The app requires an API key to communicate with the Gemini-3-flash-preview model.
 
-Open .streamlit/secrets.toml and add a Google API KEY.
+Create a folder named .streamlit in the root directory.
+
+Create a file named secrets.toml inside that folder.
+
+Add your key exactly like this:
+
+Ini, TOML
+
+GEMINI_API_KEY = "YOUR_ACTUAL_API_KEY_HERE"
 
 5. Initialize the Database
 Ensure the modules.csv file is in the root directory. If it doesn't exist, the app will create a new one when you add your first module.
