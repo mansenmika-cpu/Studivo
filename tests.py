@@ -50,7 +50,7 @@ response = None
 
 if st.button("Create a Test", use_container_width=True):
     model = genai.GenerativeModel(
-        model_name='gemini-2.5-flash',
+        model_name='gemini-3.0-flash',
         system_instruction=system_instructions
     )
 
@@ -62,6 +62,7 @@ if st.button("Create a Test", use_container_width=True):
             st.markdown(f"""
                     <div style="background-color: #e8f4f8; padding: 20px; border-radius: 10px; border-left: 5px solid #2980b9;">
                         {response.text}
+                    
                     </div>
                 """, unsafe_allow_html=True)
             st.session_state["student_language"] = language
@@ -71,4 +72,5 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
 
