@@ -42,7 +42,7 @@ system_instruction = f"""
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 model = genai.GenerativeModel(
-        model_name='gemini-3.0-flash',
+        model_name='gemini-3-flash-preview',
         system_instruction=system_instruction
     )
 
@@ -78,4 +78,5 @@ if prompt := st.chat_input("Ask about your notes or images..."):
             
         except Exception as e:
             st.error(f"Error: {e}")
+
 
