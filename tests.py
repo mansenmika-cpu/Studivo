@@ -50,7 +50,7 @@ response = None
 
 if st.button("Create a Test", use_container_width=True):
     model = genai.GenerativeModel(
-        model_name='gemini-3-flash-preview',
+        model_name='gemini-2.0-flash',
         system_instruction=system_instructions
     )
 
@@ -71,3 +71,4 @@ if st.button("Create a Test", use_container_width=True):
 
         except Exception as e:
             st.error(f"Error connecting to Gemini: {e}") 
+
