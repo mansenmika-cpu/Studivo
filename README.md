@@ -1,5 +1,5 @@
 🎓 Studivo: AI-Powered Academic Assistant
-Studivo is an all-in-one educational platform designed to streamline study management and provide personalized AI tutoring. By combining resource organization with the power of Gemini-3-flash-preview, Studivo helps students master their subjects through interactive dialogue and multimodal learning.
+Studivo is an all-in-one educational platform designed to streamline study management and provide personalized AI tutoring. By combining resource organization with the power of Gemini-2.5-flash, Studivo helps students master their subjects through interactive dialogue and multimodal learning.
 
 ⚙️ Installation & Local Setup
 Follow these steps to get a local copy of Studivo up and running on your machine.
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 Note: This will install streamlit, pandas, google-generativeai, and other essential tools for the AI and UI.
 
 4. Configure Your API Secrets
-The app requires an API key to communicate with the Gemini-3-flash-preview model.
+The app requires an API key to communicate with the Gemini-2.5-flash model.
 
 Create a folder named .streamlit in the root directory.
 
